@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import React ,{Component}from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap';
 import './App.css';
+import Header from '../src/Components/Header';
+import India from './Components/India.js';
+import World from '../src/Components/World';
+import State from '../src/Components/States';
+import{
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch 
+} from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor(){
+    super();
+  }
+  render(){
+    return(
+
+      <div>
+        <Router>
+        <Header/>
+        </Router>
+          <div className="container-fluid">
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <India/>
+                </Route>
+                <Route path="/india">
+                  <India/>
+                </Route>
+                <Route path="/world">
+                  <World/>
+                </Route>
+              </Switch>
+            </Router>
+
+
+
+          </div>
+      </div>
+    )
+  }
 }
-
 export default App;
